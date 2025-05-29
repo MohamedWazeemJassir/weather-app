@@ -6,19 +6,16 @@ async function getWeather() {
     
     try {
         const response = await fetch(url);
-        // if (!response.ok){
-        //     throw new Error(`HTTP error! Status: ${response.status}`);
-        // }
         const data = await response.json();
+
         if (data.error){
             weatherDisplay.innerHTML = `<p style="color: red;">Error: ${data.error.message}</p>`
             return;
         }
+
         displayWeather(data);
     } catch (error) {
         weatherDisplay.innerHTML = `<p style="color: red;">Failed to fetch weather data. Please try again later.</p>`
-        // console.error('Failed to fetch weather data:', error);
-        // alert('Failed to fetch weather data.');
     }
 }
 
